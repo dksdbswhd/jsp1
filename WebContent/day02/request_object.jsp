@@ -8,7 +8,7 @@
 </head>
 <body>
 	<!-- JSP 내장(implicit) 객체 : 선언하지 않고 사용합니다.
-		1) out(JspWriter클래스타입)
+		1) out(JspWriter클래스타입)	: HTML 문서에 출력
 		2) request(HttpServletRequest클래스타입) 
 		: 사용자가 요청을 보내는 객체
 		: 메소드값으로 알아낼 수 있는 정보들을 확인하기
