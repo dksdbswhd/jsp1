@@ -30,6 +30,8 @@
       String email = request.getParameter("email");
       int age = Integer.parseInt(request.getParameter("age"));   // Vo 객체에 저장할 때 필요합니다.
       String addr = request.getParameter("addr");
+      if(addr.equals("기타")) addr = request.getParameter("addr_etc");
+      
       String gender = request.getParameter("gender");
       String[] hobby = request.getParameterValues("hobby");
       String hobbies = Arrays.toString(request.getParameterValues("hobby"));
@@ -44,8 +46,7 @@
       <li><%= email %></li>
       <li><%= age %>세 (<%= (gender.equals("male") ? "남":"여") %>)</li>
       <li><%= addr %></li>
-      <li><%= gender %></li>
-      <li><%= Arrays.toString(hobby) %></li>
+      <li><%= hobbies %></li>
    </ul>
 </body>
 </html>
