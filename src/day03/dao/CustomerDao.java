@@ -32,6 +32,7 @@ public class CustomerDao {
 			pstmt.setString(7, cus.getHobby());
 			
 			pstmt.execute();
+			conn.commit();
 		}catch(SQLException e) {
 			
 		}finally {

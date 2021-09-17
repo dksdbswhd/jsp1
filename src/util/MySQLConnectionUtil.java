@@ -22,6 +22,7 @@ public class MySQLConnectionUtil {
 	//DriverManager 클래스의 메소드 getConnection 으로 데이터베이스 드라이버에 대한 Connection 구현객체를 생성
 	//                                                    ㄴ    인터페이스 Connection 타입으로 참조합니다.
 			conn = DriverManager.getConnection(url,user,password);    //db 연결에 필요한 정보 인자로 전달
+			conn.setAutoCommit(false);	//직접 commit 메소드 실행
 		} catch (ClassNotFoundException e) {
 			System.out.println("데이터베이스 드라이버 로드에 문제가 생겼습니다. : " + e.getMessage());
 		} catch (SQLException e) {

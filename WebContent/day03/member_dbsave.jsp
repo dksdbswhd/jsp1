@@ -1,3 +1,5 @@
+<%@page import="day03.dto.Customer"%>
+<%@page import="day03.dao.CustomerDao"%>
 <%@page import="java.util.Arrays"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -39,6 +41,11 @@
       //String hobby = request.getParameter("hobby");
    
       // 참고 : hobby 는 배열입니다. -> getParameterValues() 메소드로 데이터를 받습니다. -> 변수 타입은 String[]
+    	
+      String password = request.getParameter("password");
+      Customer cus = new Customer(0,name,password,email,addr,gender,age,hobbies);
+      CustomerDao dao = CustomerDao.getInstance();
+      dao.insert(cus);
    %>
    <h3>환영합니다! WELCOME!!</h3>
    <ul>
