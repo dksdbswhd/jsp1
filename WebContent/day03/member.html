@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSP1 프로젝트[6]-회원 등록 </title><!-- 스타일 참고  -->
-<link rel="stylesheet" href="../css/member.css?v=3">
+<title>JSP1 프로젝트[6]-회원 등록</title>
+<!-- 스타일 참고  -->
+<link rel="stylesheet" href="../css/member.css">
 <script>
 	function validCheck() {
 		const frm = document.frmReg;
@@ -30,17 +31,21 @@
 		alert('취미를 1개라도 선택해 주세요.');
 		return false;
 	}
+
+	
 </script>
 </head>
 <body>
 	<div style="width: 70%; margin: auto;">
 		<h3>회원 등록</h3>
-		<form action ="member_save.jsp" name="frmReg" method="post"
-				onsubmit="return validCheck()"> 
+		<form action="member_save.jsp" name="frmReg" method="post"
+			onsubmit="return validCheck()">
 			<table style="width: 100%">
 				<tr>
-					<td><label>이름</label></td>  <!--  required 필수 입력  , readonly : 읽기만.-->
-					<td><input type="text" name="name" placeholder="이름 이력(필수)"  required></td>
+					<td><label>이름</label></td>
+					<!--  required 필수 입력  , readonly : 읽기만.-->
+					<td><input type="text" name="name" placeholder="이름 이력(필수)"
+						required></td>
 				</tr>
 				<tr>
 					<td><label>패스워드</label></td>
@@ -52,46 +57,61 @@
 				</tr>
 				<tr>
 					<td><label>나이</label></td>
-					<td><input type="number" name="age" min="10" max="99"  
-						value="30"></td>  <!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
+					<td><input type="number" name="age" min="10" max="99"
+						value="30"></td>
+					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
 				</tr>
 				<tr>
 					<td><label>주소</label></td>
-					<td><select name="addr">
+					<td><select name="addr" id="addr_select">
 							<!-- value 속성은 서버에 전달시킬 값 -->
 							<option value="서울">서울</option>
-							<option value="인천" selected>인천</option>  <!-- selected 는 기본 선택 값. -->
+							<option value="인천" selected>인천</option>
+							<!-- selected 는 기본 선택 값. -->
 							<option value="대전">대전</option>
 							<option value="광주">광주</option>
-							<option value="부산">부산</option>
-					</select></td>
+							<option value="기타">기타</option>
+					</select> 
+					<span id="addr_id"><input type="text" name="addr_etc" disabled="disabled" 
+							placeholder="기타 지역을 입력하세요." >
+					</span></td>
 				</tr>
 				<tr>
 					<td><label>성별</label></td>
 					<td><input type="radio" value="male" name="gender">남자
-						<input type="radio" value="female" name="gender" checked>여자   <!-- checked  는 기본 선택 -->
-					</td>
+						<input type="radio" value="female" name="gender" checked>여자
+						<!-- checked  는 기본 선택 --></td>
 				</tr>
 				<tr>
 					<td><label>취미</label></td>
-					<td><!--  checkbox 도  checked  는 기본 선택 -->  <!--  -->
-						<!-- 복수 선택이 가능 : hobby 이름이 같고 선택 여러개 하면 선택한 값은 배열로 저장됩니다. --> 
-						<input type="checkbox" name="hobby" value="축구">축구
-						<input type="checkbox" name="hobby" value="농구" checked>농구
-						<input type="checkbox" name="hobby" value="스키">스키 
-						<input type="checkbox" name="hobby" value="달리기">달리기
+					<td>
+						<!--  checkbox 도  checked  는 기본 선택 --> <!--  --> <!-- 복수 선택이 가능 : hobby 이름이 같고 선택 여러개 하면 선택한 값은 배열로 저장됩니다. -->
+						<input type="checkbox" name="hobby" value="축구">축구 <input
+						type="checkbox" name="hobby" value="농구" checked>농구 <input
+						type="checkbox" name="hobby" value="스키">스키 <input
+						type="checkbox" name="hobby" value="달리기">달리기
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" style="text-align: center">
-						<input 	type="submit" value="가입하기">   
-						<!-- submit : 서버에게 데이터를 제출 (form action 속성값에 설정된 url 로 데이터 전달.)
-						action 이 .html 은 데이터 전송확인은 못합니다. url 이동만 확인!!-->
-						<input type="reset"	value="다시쓰기">
-					</td>
-				</tr>	
+					<td colspan="2" style="text-align: center"><input
+						type="submit" value="가입하기"> <!-- submit : 서버에게 데이터를 제출 (form action 속성값에 설정된 url 로 데이터 전달.)
+						action 이 .html 은 데이터 전송확인은 못합니다. url 이동만 확인!!--> <input
+						type="reset" value="다시쓰기"></td>
+				</tr>
 			</table>
 		</form>
 	</div>
+	<script type="text/javascript">
+	document.getElementById("addr_select").addEventListener("change",function(){
+		if(this.value=="기타"){
+//			document.getElementById("addr_id").style.display="inline-block";
+			document.frmReg.addr_etc.disabled=false;
+		}else {
+//			document.getElementById("addr_id").style.display="none";
+			document.frmReg.addr_etc.disabled=true;
+		}
+		
+	});
+	</script>
 </body>
 </html>
