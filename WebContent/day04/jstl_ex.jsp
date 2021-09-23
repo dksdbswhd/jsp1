@@ -34,6 +34,10 @@ age 출력 : ${age}, 단순 el 보다는 c:out 출력 태그 사용합니다. <c
 <c:forEach var="i" begin="1" end="${param.cnt}">	<!-- parameter를 가져옵니다. 이름은 cnt -->
 	<c:out value="${i }" /><br>
 </c:forEach>	<!-- 실행방법 :  -->
-<a href="jstl_ex.jsp?cnt=10">param.cnt 테스트</a>
+<a href="jstl_ex.jsp?cnt=5">param.cnt 테스트</a>
+<h3> fortocken 태그입니다. </h3> <!-- 구분자로 토큰생성하여 반복. -->
+<c:forTokens items="sana,nana,나연,다현" delims="," var="user">
+	<c:out value="${user}" /><br>
+</c:forTokens>
 </body>
 </html>
