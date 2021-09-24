@@ -13,7 +13,12 @@
 <%
 	MybatisDao dao = MybatisDao.getInstance();
 	List<Customer> list = dao.selectAll();
-	out.print(list);
+	out.print("<h4>select * from customer</h4>");
+	out.print(list); 
+	
+	Customer cus = dao.select(99);
+	out.print("<h4>select * from customer where idx=99</h4>");
+	out.print(cus);
 %>
 </body>
 </html>
