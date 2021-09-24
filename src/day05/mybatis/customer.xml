@@ -6,10 +6,10 @@
 <mapper namespace="customer"> <!-- namespace : 일종의 식별역할의 변수 -->
 
 	<select id="selectAll" resultType="day03.dto.Customer"> <!-- id는 식별자 -->
-		select * from customer
+		select * from customer  
 	</select>
 	
-	<select id="selectOner" resultType="day03.dto.Customer" parameterType="int">
+	<select id="selectOne" resultType="day03.dto.Customer" parameterType="int">
 		select * from customer where idx=#{idx}
 	</select>
 	

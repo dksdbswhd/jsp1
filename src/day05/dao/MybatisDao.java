@@ -1,4 +1,4 @@
-package day06.dao;
+package day05.dao;
 
 import java.util.List;
 
@@ -6,14 +6,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import day03.dto.Customer;
-import day06.mybatis.SqlSessionBean;
+import day05.mybatis.SqlSessionBean;
 
 public class MybatisDao {
 
 	private static MybatisDao dao = new MybatisDao();
 	private MybatisDao() { }
 	public static MybatisDao getInstance() {
-		return dao;
+		return dao; 
 	}
 	
 	//1.새로운 코딩 : 가장 중요한것은 SqlSession 객체를 생성해야한다. → 메소드에 SqlSessionFactory 객체 가져오기
@@ -36,6 +36,15 @@ public class MybatisDao {
 				//		 ㄴ 이 메소드는 리턴타입이 Object, select 조회결과가 1row일때
 		mapper.close();
 		return cus;
+	}
+	
+	public int insert(Customer cus) {
+		//SqlSession mapper = sqlFactory.openSession(true);	//auto commit 을 true, 기본값 false
+		SqlSession mapper = sqlFactory.openSession();
+		int n = mapper.insert("insert",cus);	//auto commit? n값 확인?
+		mapper.commit();
+		mapper.close();
+		return n;
 	}
 	
 }
