@@ -41,10 +41,26 @@ public class MybatisDao {
 	public int insert(Customer cus) {
 		//SqlSession mapper = sqlFactory.openSession(true);	//auto commit 을 true, 기본값 false
 		SqlSession mapper = sqlFactory.openSession();
-		int n = mapper.insert("insert",cus);	//auto commit? n값 확인?
+		int n = mapper.insert("insert",cus);	//auto commit? n값 확인? 정상 insert 이면 1
 		mapper.commit();
 		mapper.close();
 		return n;
 	}
 	
+	public int delete(int idx) {
+		SqlSession mapper = sqlFactory.openSession();
+		int n = mapper.delete("delete", idx);
+		mapper.commit();
+		mapper.close();
+		return n;
+	}
+	
+	public int update(Customer cus) {
+		SqlSession mapper = sqlFactory.openSession();
+		int n=mapper.update("update", cus);
+		mapper.commit();
+		mapper.close();
+		return n;
+	}
+	//결론 insert, update, delete 는 return 값이 있다. → 실행한 결과 행의 갯수
 }
