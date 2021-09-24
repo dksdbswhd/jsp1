@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- sql mapper -->
+<mapper namespace="customer"> <!-- namespace : 일종의 식별역할의 변수 -->
+
+	<select id="selectAll" resultType="day03.dto.Customer"> <!-- id는 식별자 -->
+		select * from customer
+	</select>
+	
+	<select id="selectOner" resultType="day03.dto.Customer" parameterType="int">
+		select * from customer where idx=#{idx}
+	</select>
+	
+	<!-- 파라미터가 여러개의 값일때 : Map(key와 value) 또는 DTO 클래스 -->
+	<insert id="insert" parameterType="day03.dto.Customer">
+		insert into customer (name,password,email,addr,gender,age,hobby)
+   		values (#{name},#{password},#{email},#{addr},#{gender},#{age},#{hobby})
+	</insert>
+	
+</mapper>
+<!-- ${ } : 표현식. 중괄호안에 수식에 대한 연산결과값을 구해서 출력 
+	 #{ } : 무조건 문자열(' '기호사용)로 중괄호 안의 값을 처리한다.-->
+
+
+
+
+
+
+
